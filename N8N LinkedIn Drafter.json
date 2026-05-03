@@ -1,0 +1,812 @@
+{
+  "name": "N8N LinkedIn Drafter - Full Project Fixed",
+  "nodes": [
+    {
+      "parameters": {
+        "trigger": [
+          "message",
+          "reaction_added"
+        ],
+        "channelId": {
+          "__rl": true,
+          "value": "C0B18AR6BRC",
+          "mode": "list",
+          "cachedResultName": "n8n_marketing_bot"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.slackTrigger",
+      "typeVersion": 1,
+      "position": [
+        34752,
+        10816
+      ],
+      "id": "33218d0c-4e79-4b00-ac95-dd5a5312a2ca",
+      "name": "Slack Trigger",
+      "webhookId": "ea3d781b-5964-4b83-80eb-7f1e84efb054",
+      "credentials": {
+        "slackApi": {
+          "id": "ozclw2RiEWTgzgRY",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ JSON.stringify({ voice_guide: `Phaedon Brand Voice Analysis\nCore Voice Attributes\nPrimary Voice Type: Parent at the Bar\nA hybrid voice that combines authoritative guidance with accessible, casual delivery. This voice:\n● Leads from experience while maintaining approachability\n● Shares lessons learned and cautionary tales\n● Balances protection with empowerment\n● Uses casual language while maintaining credibility\nEssential Voice Characteristics\n1. Passionate\n  a. Demonstrates deep care for the subject matter\n  b. Shows enthusiasm without being performative\n  c. Conveys genuine love for marketing and teaching\n2. Introspective\n  a. Examines and shares deeper insights behind decisions\n  b. Reveals the thought process and lessons learned\n  c. Explores the 'why' behind strategies and outcomes\n  d. Reflects openly on experiences and their implications\n3. Approachable\n  a. Makes complex concepts accessible\n  b. Avoids unnecessary gates or barriers\n  c. Maintains depth while being welcoming\n  d. Uses casual language purposefully\n4. Empathetic\n  a. Shows understanding of audience challenges\n  b. Acknowledges difficulties without judgment\n  c. Balances tough love with support\n  d. Demonstrates genuine care for audience success\n5. Direct\n  a. Communicates clearly without hedging\n  b. Takes clear stances on issues\n  c. Removes unnecessary qualifiers\n  d. Gets to the point efficiently\nKey Voice Tensions & Distinctions\nBrand Voice vs. Personal Voice\n● Brand: More measured and consistently approachable\n● Personal: More outspoken and occasionally sharp-edged\n● Balance: Maintains authenticity while being more broadly accessible\nAuthority vs. Accessibility\n● Shares expertise without being pretentious\n● Uses casual language while maintaining credibility\n● Balances depth with clarity\nWriting Guidelines\nDo:\n● Write with conviction and clear opinions\n● Share behind-the-scenes insights and reflections\n● Use casual, direct language\n● Acknowledge complexities and challenges\n● Give credit and cite sources\n● Lead with empathy and understanding\nDon't:\n● Use unnecessary jargon or academic language\n● Hide behind data without sharing experience\n● Dance around difficult truths\n● Make claims without backing\n● Prioritize hype over substance\nTone Calibration\n● Too Formal: 'This methodology has demonstrated significant efficacy in multiple use cases.'\n● Just Right: 'We have tried this with dozens of customers, and here is what actually works.'\n● Too Casual: 'OMG you guys, this strategy is totally gonna crush it!'\nBrand Values\nIntegrity — Unwavering commitment to honest marketing practices, refusing to promote quick fixes or harmful tactics. Challenges industry misconceptions and prioritizes sustainable, ethical approaches over short-term gains. Transparent about what works, what doesn't, and why.\nCuriosity — Drives continuous exploration and testing of marketing approaches. Asks thoughtful questions, investigates assumptions, and maintains an explorer's mindset rather than defaulting to 'best practices'. Encourages customers to question and understand rather than blindly follow.\nComplimentary — Consistent attribution and celebration of others' contributions. Lifts up team members, customers, and even competitors when they're doing good work. Specific callouts and acknowledgments in content and communications.\nProtective — Fierce defense of customers' and audience members' best interests. Calls out harmful industry practices, steers people away from marketing 'traps', and ensures advice serves the audience rather than the brand. A shield against predatory marketing tactics while empowering people to make informed decisions.\nContent Principles\n1. Learning in Public — share real-time insights and discoveries; be transparent about processes and outcomes; document lessons learned and evolving perspectives.\n2. Practical Over Theoretical — focus on actionable insights; ground advice in real experience; prioritize what works over what should work.\n3. Behind the Scenes — share the full story including challenges; reveal the thinking behind decisions; include context and rationale.\n4. Protection Without Gatekeeping — guard against harmful practices; share knowledge openly; guide without restricting.\nBrand Voice Summary\nThe Phaedon voice combines the warmth of a trusted mentor with the casual authenticity of a friend at a bar. It maintains authority through experience rather than position, and builds trust through transparency rather than persuasion. The voice is protective without being paternalistic, direct without being harsh, and accessible without sacrificing depth.\nPhaedon Content Framework — Balancing Data & Story\nCore Philosophy: value real experience and practical insights over pure data while maintaining analytical rigor.\nContent Pillars\n1. Experience Over Statistics — lead with real stories rather than opening with statistics; use data to support observations, not to lead them; share specific examples from actual customer work or personal experience; when using statistics, explain the 'why' behind the numbers.\n2. Behind-the-Scenes Transparency — share the messier realities of marketing experiments; include what didn't work along with what did; document real-time learnings and evolving perspectives; reveal thought processes behind decisions.\n3. Pattern Recognition Over Data Points — focus on aggregate trends from real experiences; value anecdotal patterns from customer feedback; look for recurring themes in customer conversations; prioritize practical insights over theoretical frameworks.\n4. Anti-Patterns to Avoid\n  ❌ Leading with '47% of marketers say...'\n  ❌ Using data points without context\n  ❌ Sharing success metrics without the struggle story\n  ❌ Making claims without practical backing\nContent Types & Their Balance\nCase Studies: 70% narrative/experience, 20% supporting data, 10% theoretical framework.\nStrategy Posts: 60% practical application, 25% experience-based insights, 15% supporting data.\nAnalysis Pieces: 50% pattern recognition, 30% specific examples, 20% data validation.\nWriting Approaches\nStrong:\n  ✅ 'We tried this with dozens of customers, and here is what actually works...'\n  ✅ 'Let me walk you through how this played out in real time...'\n  ✅ 'Here is what we learned after a hundred newsletters...'\nWeak:\n  ❌ 'Studies show that marketing attribution...'\n  ❌ 'The data suggests that...'\n  ❌ 'Best practices indicate...'\nVoice Elements in Data Discussion\nDo: question assumptions; challenge industry 'best practices'; share raw experiences; acknowledge complexity; provide practical alternatives.\nDon't: hide behind statistics; over-rely on industry benchmarks; present theory without practice; simplify complex realities.\nImplementation Guidelines\n1. Start with the Story — begin with real experience; set up the context; share the struggle; then support with data.\n2. Support with Substance — use data as validation; include specific examples; reference practical applications; provide actionable takeaways.\n3. Close with Clarity — summarize key learnings; offer clear next steps; acknowledge limitations; invite discussion.\nKey Reminders\n'I would rather have 3 customer conversations than 1000 data points if those conversations are with our best customers.'\n'We don't need that idea just because it worked in 1908 when horses were the main form of transportation.'\n'I want to give them a vessel, and then they can fill it with their own details.'\nMeasuring Success\nFocus on: unsolicited reply rate; quality of customer conversations; practical implementation stories; community engagement; real results from advice.\nRather than: pure traffic metrics; generic engagement rates; theoretical reach; industry benchmarks.\nKey Tips for Implementation\n1. Write titles/hooks/headlines that create curiosity gaps — make people want to click to resolve the tension. Ask questions; start stories but leave them unfinished; be unexpected; imply you have information they don't; imply THEY have information they have just forgotten.\n2. Use one-sentence paragraphs liberally — they create visual white space that is easier to read on mobile.\n3. Make strong, somewhat polarizing statements — middle-of-the-road content rarely goes viral.\n4. Include specific numbers and concrete examples — they add credibility.\n5. End with a memorable 3-4 line summary — people often remember the first and last things they read.\n6. Balance authenticity with authority — share personal experiences while maintaining expertise.\n7. Use square brackets — to break up text with [Key Points] for visual scanning.\n8. Test different formats — sometimes a story works better than a list, depending on your message.\n\nNo longer than 1900 characters including spaces \n\nOutput strictly JSON: {\\\"topic\\\": string, \\\"draft\\\": string}.`, user_payload: $json.user_payload }) }}",
+        "options": {}
+      },
+      "name": "Voice Guide (Edit Me)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        36320,
+        11008
+      ],
+      "id": "daf8ef76-78f0-4f47-97d7-6c32292d5309"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.subtype || '' }}",
+              "operation": "isEmpty"
+            },
+            {
+              "value1": "={{ $json.bot_id || '' }}",
+              "operation": "isEmpty"
+            },
+            {
+              "value1": "={{ $json.text || '' }}",
+              "operation": "notContains",
+              "value2": "[phaedon-bot]"
+            },
+            {
+              "value1": "={{ $json.thread_ts || '' }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "name": "Ignore Edits/Replies",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        35200,
+        11008
+      ],
+      "id": "41271187-db9d-4119-b8bc-f415927fb7e4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.text || '' }}",
+              "operation": "regex",
+              "value2": "https?://\\S+"
+            }
+          ]
+        }
+      },
+      "name": "Is it a URL?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        35424,
+        11008
+      ],
+      "id": "2d00d05b-4bd4-4b0c-ba4c-e26a7a3b8d15"
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $json.text || '';\nconst match = text.match(/https?:\\/\\/\\S+/);\nconst url = match ? match[0].replace(/[>)\\].,]+$/, '') : '';\nreturn { url, original_text: text, channel: $json.channel, ts: $json.ts, thread_ts: $json.thread_ts || '' };"
+      },
+      "name": "Extract URL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        35648,
+        10912
+      ],
+      "id": "58c59c6e-ef64-4d59-a907-b42fcd6190b1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {},
+        "requestOptions": {}
+      },
+      "name": "Fetch Article",
+      "type": "n8n-nodes-base.jinaAi",
+      "typeVersion": 1,
+      "position": [
+        35872,
+        10912
+      ],
+      "id": "3255cb59-678c-4cfd-8c57-988a2af10f18",
+      "credentials": {
+        "jinaAiApi": {
+          "id": "sMGuc8jjp2R8VnQx",
+          "name": "Jina AI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "user_payload",
+              "value": "=Mode: (a) Article context.\nsource_url: {{ $('Extract URL').item.json.url }}\n\nArticle title: {{ $json.title || '' }}\n\nArticle body:\n{{ ($json.content || '').toString().substring(0, 20000).trim() }}\n\nWrite the LinkedIn post. JSON only.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Build Prompt (URL)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        36096,
+        10912
+      ],
+      "id": "21dc3ac5-bbd7-465c-a688-f6e264846209"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1",
+              "name": "user_payload",
+              "value": "=Mode: (b) Freeform topic.\nUser input:\n{{ $json.text }}\n\nWrite the LinkedIn post. JSON only.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Build Prompt (Text)",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        36096,
+        11104
+      ],
+      "id": "800d70d8-2067-4883-8942-6f26ba4432c5"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "35434891-7cfd-8033-be98-e1660ae14c07",
+          "mode": "list"
+        },
+        "title": "={{ $('Message a model').item.json.message.content.topic }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Draft|rich_text",
+              "textContent": "={{ $('Message a model').item.json.message.content.draft }}"
+            },
+            {
+              "key": "Slack TS|rich_text",
+              "textContent": "={{ $json.ts || $json.message?.ts || '' }}"
+            },
+            {
+              "key": "Source URL|url",
+              "urlValue": "={{ $('Extract URL')?.item?.json?.url || '' }}"
+            },
+            {
+              "key": "Select|select",
+              "selectValue": "Draft"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Notion (Staging)",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.1,
+      "position": [
+        37120,
+        11008
+      ],
+      "id": "19985e95-2cfc-49b1-9049-988a26b9b002",
+      "credentials": {
+        "notionApi": {
+          "id": "jnUTraIHvsJHW8GE",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-5.5",
+          "mode": "list",
+          "cachedResultName": "GPT-5.5"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.voice_guide }}",
+              "role": "system"
+            },
+            {
+              "content": "={{ $json.user_payload }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        36544,
+        11008
+      ],
+      "id": "a4ce1f6a-0400-44bb-a334-2b935a244b41",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "mOzJqy91gOV6VEaL",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "={{ $('Slack Trigger').item.json.channel }}",
+          "mode": "id"
+        },
+        "text": "=*{{ $('Message a model').item.json.message.content.topic }}*\n\n{{ $('Message a model').item.json.message.content.draft }}\n\n_[phaedon-bot]_",
+        "otherOptions": {}
+      },
+      "name": "Post Draft to Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        36896,
+        11008
+      ],
+      "id": "6baa4fcc-6e6b-4285-8f79-9e14e755a7d4",
+      "webhookId": "16a682b6-7a0d-448d-b479-39c70f705379",
+      "credentials": {
+        "slackApi": {
+          "id": "ozclw2RiEWTgzgRY",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.type || '' }}",
+              "value2": "reaction_added"
+            }
+          ]
+        }
+      },
+      "name": "Route Event Type",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        34976,
+        10816
+      ],
+      "id": "32ac73c0-0ec0-4bca-9be5-ce79bb764c35"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.reaction || '' }}",
+              "value2": "white_check_mark"
+            }
+          ]
+        }
+      },
+      "name": "Is Approval Reaction?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        35200,
+        10624
+      ],
+      "id": "6411076f-57c1-4573-b1e8-44f756bf0a82"
+    },
+    {
+      "parameters": {
+        "url": "https://slack.com/api/conversations.history",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "slackApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "channel",
+              "value": "={{ $('Slack Trigger').item.json.item.channel }}"
+            },
+            {
+              "name": "latest",
+              "value": "={{ $('Slack Trigger').item.json.item.ts }}"
+            },
+            {
+              "name": "inclusive",
+              "value": "true"
+            },
+            {
+              "name": "limit",
+              "value": "20"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Get Full Thread",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        35424,
+        10624
+      ],
+      "id": "df6ab412-9b6a-4b44-aa0b-a18025a4dfa1",
+      "credentials": {
+        "slackApi": {
+          "id": "ozclw2RiEWTgzgRY",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const reactedTs = $('Slack Trigger').first().json.item.ts;\nconst messages = $json.messages || [];\n\n// conversations.history returns newest-first. The reacted message and any earlier bot draft are in here.\nconst stripFooter = (t) => (t || '').replace(/_\\[phaedon-bot\\]_\\s*$/, '').replace(/\\[phaedon-bot\\]\\s*$/i, '').trim();\n\n// Find the message the user reacted to.\nconst reactedMsg = messages.find(m => m.ts === reactedTs);\n\n// All bot drafts (real APP-posted messages, not the human echo). Exclude approval confirmations.\n// A real bot draft has bot_id set; a human paste of '[phaedon-bot]' won't.\nconst botDrafts = messages.filter(m => m.bot_id && m.text && m.text.includes('[phaedon-bot]') && !m.text.startsWith('Approved and queued'));\n\n// The most recent bot draft AT OR BEFORE the reacted message — this is what's in Notion.\nconst reactedTsNum = parseFloat(reactedTs);\nconst priorBotDrafts = botDrafts.filter(m => parseFloat(m.ts) <= reactedTsNum);\npriorBotDrafts.sort((a, b) => parseFloat(b.ts) - parseFloat(a.ts));\nconst botDraft = priorBotDrafts[0] || botDrafts.sort((a, b) => parseFloat(b.ts) - parseFloat(a.ts))[0] || null;\n\n// Final text: if the user reacted on a non-bot message (their edited copy), use that. Otherwise use the bot draft.\nlet finalText = '';\nif (reactedMsg && !reactedMsg.bot_id) {\n  finalText = stripFooter(reactedMsg.text);\n} else if (botDraft) {\n  finalText = stripFooter(botDraft.text);\n}\n\n// Candidate TS list for Notion lookup, in priority order:\n//   1. The bot draft's ts (this is what was stored when staging).\n//   2. The reacted message's ts (in case Notion was somehow staged with that).\nconst candidateTsList = [botDraft ? botDraft.ts : '', reactedTs].filter(Boolean);\nconst candidateTs = [...new Set(candidateTsList)].join(',');\n\nreturn {\n  bot_ts: botDraft ? botDraft.ts : reactedTs,\n  candidate_ts: candidateTs,\n  final_text: finalText,\n  found: !!botDraft\n};"
+      },
+      "name": "Extract Final Draft",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        35648,
+        10624
+      ],
+      "id": "dc30a368-d58d-435a-afbf-5c6933b82255"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "35434891-7cfd-8033-be98-e1660ae14c07",
+          "mode": "list"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "name": "Find Notion Page by TS",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.1,
+      "position": [
+        35872,
+        10624
+      ],
+      "id": "3de5b776-ef3e-42da-a0c7-08fe4d8dd466",
+      "credentials": {
+        "notionApi": {
+          "id": "jnUTraIHvsJHW8GE",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const candidates = ($('Extract Final Draft').first().json.candidate_ts || '').split(',').filter(Boolean);\nconst pages = $input.all().map(i => i.json);\n\nconst getTs = (p) => {\n  if (p.property_slack_ts) return String(p.property_slack_ts).trim();\n  const rt = p.properties && p.properties['Slack TS'] && p.properties['Slack TS'].rich_text;\n  if (rt && rt.length) return rt.map(r => r.plain_text || '').join('').trim();\n  return '';\n};\n\nlet match = null;\nfor (const ts of candidates) {\n  match = pages.find(p => getTs(p) === ts);\n  if (match) break;\n}\n\nif (!match) return [];\nreturn [{ json: match }];"
+      },
+      "name": "Match Page by TS",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        36096,
+        10624
+      ],
+      "id": "9939a1f3-2a42-4af9-9ccd-44eea83dbda0"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.id || '' }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "name": "Page Found?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        36320,
+        10624
+      ],
+      "id": "aa396937-6246-4d99-b6ef-db185080427f"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Final Version|rich_text",
+              "textContent": "={{ ($('Extract Final Draft').item.json.final_text || '').toString().trim() || $json.property_draft || '' }}"
+            },
+            {
+              "key": "Select|select",
+              "selectValue": "Approved"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Mark Approved in Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.1,
+      "position": [
+        36608,
+        10528
+      ],
+      "id": "beb2ecdc-3465-4e4a-8745-2e6c3caa3156",
+      "credentials": {
+        "notionApi": {
+          "id": "jnUTraIHvsJHW8GE",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "={{ $('Slack Trigger').item.json.item.channel }}",
+          "mode": "id"
+        },
+        "text": "=Approved and queued for publish. _[phaedon-bot]_",
+        "otherOptions": {}
+      },
+      "name": "Confirm Approval in Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        36896,
+        10528
+      ],
+      "id": "047ea938-2cc0-4199-a5ad-958b00e65fcc",
+      "webhookId": "f1f31639-28c9-4e62-9954-cbbcf80225c5",
+      "credentials": {
+        "slackApi": {
+          "id": "ozclw2RiEWTgzgRY",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "={{ $('Slack Trigger').item.json.item.channel }}",
+          "mode": "id"
+        },
+        "text": "=:warning: Couldn't find the Notion page for this draft (Slack TS lookup miss). Was it staged correctly? _[phaedon-bot]_",
+        "otherOptions": {}
+      },
+      "name": "Notify Lookup Miss",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        36608,
+        10720
+      ],
+      "id": "49c55392-5ffe-4c08-92e7-80f1c063f3ce",
+      "webhookId": "b218cc77-d417-4711-98ed-ee9d1ed251a7",
+      "credentials": {
+        "slackApi": {
+          "id": "ozclw2RiEWTgzgRY",
+          "name": "Slack account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Slack Trigger": [
+      {
+        "json": {
+          "type": "message",
+          "user": "U0AANT1DNMS",
+          "ts": "1777843238.644019",
+          "client_msg_id": "b32e4841-2bac-4736-b48d-1a41f20835df",
+          "text": "<https://www.businesswire.com/news/home/20260430852154/en/SONIC-Turns-May-into-a-Month-of-Wins-for-SONIC-Rewards-Members>",
+          "team": "T0AAH853DFY",
+          "blocks": [
+            {
+              "type": "rich_text",
+              "block_id": "F89Yc",
+              "elements": [
+                {
+                  "type": "rich_text_section",
+                  "elements": [
+                    {
+                      "type": "link",
+                      "url": "https://www.businesswire.com/news/home/20260430852154/en/SONIC-Turns-May-into-a-Month-of-Wins-for-SONIC-Rewards-Members"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "channel": "C0B18AR6BRC",
+          "event_ts": "1777843238.644019",
+          "channel_type": "group"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Slack Trigger": {
+      "main": [
+        [
+          {
+            "node": "Route Event Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route Event Type": {
+      "main": [
+        [
+          {
+            "node": "Is Approval Reaction?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ignore Edits/Replies",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ignore Edits/Replies": {
+      "main": [
+        [
+          {
+            "node": "Is it a URL?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is it a URL?": {
+      "main": [
+        [
+          {
+            "node": "Extract URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Prompt (Text)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract URL": {
+      "main": [
+        [
+          {
+            "node": "Fetch Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Article": {
+      "main": [
+        [
+          {
+            "node": "Build Prompt (URL)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Prompt (URL)": {
+      "main": [
+        [
+          {
+            "node": "Voice Guide (Edit Me)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Prompt (Text)": {
+      "main": [
+        [
+          {
+            "node": "Voice Guide (Edit Me)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Voice Guide (Edit Me)": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Post Draft to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post Draft to Slack": {
+      "main": [
+        [
+          {
+            "node": "Notion (Staging)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Approval Reaction?": {
+      "main": [
+        [
+          {
+            "node": "Get Full Thread",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Full Thread": {
+      "main": [
+        [
+          {
+            "node": "Extract Final Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Final Draft": {
+      "main": [
+        [
+          {
+            "node": "Find Notion Page by TS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Notion Page by TS": {
+      "main": [
+        [
+          {
+            "node": "Match Page by TS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Match Page by TS": {
+      "main": [
+        [
+          {
+            "node": "Page Found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page Found?": {
+      "main": [
+        [
+          {
+            "node": "Mark Approved in Notion",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Notify Lookup Miss",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Approved in Notion": {
+      "main": [
+        [
+          {
+            "node": "Confirm Approval in Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "c409a13e-e8c1-4701-a480-414bf46ca943",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "31ea4d9dbd43a68d54ae49aa9a6e81bc559a312486139cac234657682937ef36"
+  },
+  "id": "UX8EvwIW0cf6C5Pq",
+  "tags": []
+}

@@ -1,0 +1,193 @@
+{
+  "name": "LinkedIn Publisher - From Notion",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        768,
+        144
+      ],
+      "id": "9de7b7ae-00af-4448-a033-7bad5b1cfdb5"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "35434891-7cfd-8033-be98-e1660ae14c07",
+          "mode": "list",
+          "cachedResultName": "LinkedIn Content Pipeline",
+          "cachedResultUrl": "https://www.notion.so/354348917cfd8033be98e1660ae14c07"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "name": "Find Approved Posts",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [
+        976,
+        144
+      ],
+      "id": "6c34d115-7bb7-4a0f-93ef-aebabe525e02",
+      "credentials": {
+        "notionApi": {
+          "id": "jnUTraIHvsJHW8GE",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "={{ (() => { const finalFlat = ($json.property_final_version || '').toString().trim(); if (finalFlat) return finalFlat; const draftFlat = ($json.property_draft || '').toString().trim(); if (draftFlat) return draftFlat; const finalRaw = $json.properties && $json.properties['Final Version'] && $json.properties['Final Version'].rich_text && $json.properties['Final Version'].rich_text.map(r => r.plain_text || '').join(''); if ((finalRaw || '').trim()) return finalRaw.trim(); const draftRaw = $json.properties && $json.properties.Draft && $json.properties.Draft.rich_text && $json.properties.Draft.rich_text.map(r => r.plain_text || '').join(''); return (draftRaw || '').trim(); })() }}",
+        "additionalFields": {}
+      },
+      "name": "Post to LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        1168,
+        144
+      ],
+      "id": "a2418b70-4ff6-4db7-9255-f46193b78250",
+      "disabled": true,
+      "notes": "DISABLED during debugging. Add LinkedIn OAuth credential and the 'person' (or organization URN) parameter, then enable. Mark as Published only fires after this node succeeds."
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $('Find Approved Posts').item.json.id || $json.id }}",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Select|select",
+              "selectValue": "Published"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Mark as Published",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [
+        1376,
+        144
+      ],
+      "id": "667e632c-9059-4374-bcc6-d103f6573703",
+      "credentials": {
+        "notionApi": {
+          "id": "jnUTraIHvsJHW8GE",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0B18AR6BRC",
+          "mode": "list",
+          "cachedResultName": "n8n_marketing_bot"
+        },
+        "text": "=:rocket: *Published to LinkedIn*\n\n*{{ $('Find Approved Posts').item.json.property_topic || ($('Find Approved Posts').item.json.properties && $('Find Approved Posts').item.json.properties.Topic && $('Find Approved Posts').item.json.properties.Topic.title && $('Find Approved Posts').item.json.properties.Topic.title.map(t => t.plain_text || '').join('')) || 'Untitled' }}*\n\n<{{ $('Find Approved Posts').item.json.url }}|View in Notion>\n\n_[phaedon-bot]_",
+        "otherOptions": {
+          "mrkdwn": true
+        }
+      },
+      "name": "Notify Slack of Publish",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1568,
+        144
+      ],
+      "id": "e364922a-2688-486a-81b2-7a5811aeef25",
+      "webhookId": "1668942f-4203-404d-aeae-c52fc3b487f6",
+      "credentials": {
+        "slackApi": {
+          "id": "ozclw2RiEWTgzgRY",
+          "name": "Slack account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Find Approved Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Approved Posts": {
+      "main": [
+        [
+          {
+            "node": "Post to LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post to LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Mark as Published",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark as Published": {
+      "main": [
+        [
+          {
+            "node": "Notify Slack of Publish",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "93c83923-998c-4ba0-9786-c8473832170e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "31ea4d9dbd43a68d54ae49aa9a6e81bc559a312486139cac234657682937ef36"
+  },
+  "id": "UpSfYqBzj3pYdPAr",
+  "tags": []
+}

@@ -1,0 +1,177 @@
+{
+  "name": "LinkedIn Publisher - From Notion",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [200, 300],
+      "id": "11111111-1111-1111-1111-111111111111"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "35434891-7cfd-8033-be98-e1660ae14c07",
+          "mode": "list",
+          "cachedResultName": "LinkedIn Content Pipeline",
+          "cachedResultUrl": "https://www.notion.so/354348917cfd8033be98e1660ae14c07"
+        },
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Select|select",
+              "condition": "equals",
+              "selectValue": "Approved"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Find Approved Posts",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.1,
+      "position": [400, 300],
+      "id": "22222222-2222-2222-2222-222222222222",
+      "credentials": {
+        "notionApi": {
+          "id": "jnUTraIHvsJHW8GE",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst approved = items.filter(i => {\n  const flat = i.json.property_select;\n  if (flat) return String(flat) === 'Approved';\n  const sel = i.json.properties && i.json.properties.Select && i.json.properties.Select.select;\n  return sel && sel.name === 'Approved';\n});\nreturn approved;"
+      },
+      "name": "Filter Approved (Defensive)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [560, 300],
+      "id": "66666666-6666-6666-6666-666666666666",
+      "notes": "Defense in depth: the Notion filter SHOULD return only Approved rows, but this guarantees it."
+    },
+    {
+      "parameters": {
+        "text": "={{ (() => { const finalFlat = ($json.property_final_version || '').toString().trim(); if (finalFlat) return finalFlat; const draftFlat = ($json.property_draft || '').toString().trim(); if (draftFlat) return draftFlat; const finalRaw = $json.properties && $json.properties['Final Version'] && $json.properties['Final Version'].rich_text && $json.properties['Final Version'].rich_text.map(r => r.plain_text || '').join(''); if ((finalRaw || '').trim()) return finalRaw.trim(); const draftRaw = $json.properties && $json.properties.Draft && $json.properties.Draft.rich_text && $json.properties.Draft.rich_text.map(r => r.plain_text || '').join(''); return (draftRaw || '').trim(); })() }}"
+      },
+      "name": "Post to LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [760, 300],
+      "id": "33333333-3333-3333-3333-333333333333",
+      "disabled": true,
+      "notes": "DISABLED during debugging. Add LinkedIn OAuth credential and the 'person' (or organization URN) parameter, then enable. The downstream IF node requires this to return a real id, so disabling this node short-circuits the publish path entirely."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            { "value1": "={{ $json.id || $json.activity || $json.urn || '' }}", "operation": "isNotEmpty" }
+          ]
+        }
+      },
+      "name": "Publish Succeeded?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [920, 300],
+      "id": "77777777-7777-7777-7777-777777777777",
+      "notes": "Hard stop while LinkedIn is disabled. The LinkedIn node returns an id/urn ONLY when it actually posts. When the node is disabled, n8n passes upstream data through unchanged — that data is the Notion page object, which DOES have an id, so we can't just check for any id. We check for fields the LinkedIn API specifically returns. Once LinkedIn is enabled and you've verified the field name, leave this guard in; remove only if you're confident."
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Select|select",
+              "selectValue": "Published"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Mark as Published",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.1,
+      "position": [1120, 300],
+      "id": "44444444-4444-4444-4444-444444444444",
+      "credentials": {
+        "notionApi": {
+          "id": "jnUTraIHvsJHW8GE",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0B18AR6BRC",
+          "mode": "list",
+          "cachedResultName": "n8n_marketing_bot"
+        },
+        "text": "=:rocket: *Published to LinkedIn*\n\n*{{ $json.property_topic || ($json.properties && $json.properties.Topic && $json.properties.Topic.title && $json.properties.Topic.title.map(t => t.plain_text || '').join('')) || 'Untitled' }}*\n\n<{{ $json.url }}|View in Notion>\n\n_[phaedon-bot]_",
+        "otherOptions": {
+          "mrkdwn": true
+        }
+      },
+      "name": "Notify Slack of Publish",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [1320, 300],
+      "id": "55555555-5555-5555-5555-555555555555",
+      "credentials": {
+        "slackApi": {
+          "id": "ozclw2RiEWTgzgRY",
+          "name": "Slack account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [[{ "node": "Find Approved Posts", "type": "main", "index": 0 }]]
+    },
+    "Find Approved Posts": {
+      "main": [[{ "node": "Filter Approved (Defensive)", "type": "main", "index": 0 }]]
+    },
+    "Filter Approved (Defensive)": {
+      "main": [[{ "node": "Post to LinkedIn", "type": "main", "index": 0 }]]
+    },
+    "Post to LinkedIn": {
+      "main": [[{ "node": "Publish Succeeded?", "type": "main", "index": 0 }]]
+    },
+    "Publish Succeeded?": {
+      "main": [[{ "node": "Mark as Published", "type": "main", "index": 0 }], []]
+    },
+    "Mark as Published": {
+      "main": [[{ "node": "Notify Slack of Publish", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
