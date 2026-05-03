@@ -201,7 +201,7 @@
             },
             {
               "key": "Source URL|url",
-              "urlValue": "={{ $('Extract URL')?.item?.json?.url || '' }}"
+              "urlValue": "={{ $('Extract URL').isExecuted ? ($('Extract URL').item.json.url || null) : null }}"
             },
             {
               "key": "Select|select",
